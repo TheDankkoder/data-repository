@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files List</title>
+</head>
+<body>
+    <section class="hero bd-hero bd-is-basic is-info">
+        <div class="hero-body">
+          <p class="title">
+            Available Files:
+          </p>
+          <p class="subtitle is-6">
+            Go back to <strong><a href="/">Home</a></strong>
+          </p>
+        </div>
+      </section>
+      <section class="section is-small">
+    <div class="content">
+        <% for(let i=0; i< files.length;i++){ %>            
+            <p class="subtitle is-4 has-icons-left">
+              <span class="icon is-small is-left">
+                <li>
+                    <% if (files[i].name.endsWith('.txt')) { %>
+                        <i class="fas fa-file-lines"></i>
+                    <% } else if(files[i].name.endsWith('.pdf')) { %>
+                        <i class="fas fa-file-pdf fa-solid"></i>
+                    <% } else { %>
+                        <i class="fas fa-file-image"></i>
+                    <% } %>
+                    <%= files[i].name %>                    
+                </li>
+              </span>              
+            </p>
+            <div class="field is-grouped">
+              <div class="control">
+                <form action="/view/:<%= files[i].name %>">                
+                  <button class="button is-info is-small is-light">View</button>
+                </form>
+              </div>
+              <div class="control">
+                <form action="/download/:<%= files[i].name %>">
+                  <button class="button is-info is-small is-light">Download</button>
+                </form> 
+              </div>
+              <div class="control">
+                <form action="/removefile/:<%= files[i].name %>">
+                  <button class="button is-danger is-small is-light">Delete</button>
+                </form> 
+              </div>
+            </div>
+          <% } %>
+    </div>
+    </section>
+    <section class="section is-small "></section>
+      <footer class="footer">
+        <div class="content has-text-centered">
+        </div>
+      </footer>
+</body>
+</html>

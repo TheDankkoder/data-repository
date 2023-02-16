@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View File</title>
+</head>
+<body>
+    <% if (fileName.endsWith('.txt')) { %>
+        <section class="hero bd-hero bd-is-basic">
+            <div class="hero-body">
+              <p class="title">
+               <%= fileName %>
+              </p>
+              <p class="subtitle">
+                Contents of the file. Currently logged in as <strong>Client</strong>.
+              </p>
+            </div>
+          </section>
+        <div class="card">
+            <div class="card-content">
+              <div class="content">
+                <%= content %>
+              </div>
+            </div>
+        </div> 
+        <% } else if (fileName.endsWith('.pdf')) { %>
+          <section class="hero bd-hero bd-is-basic">
+              <div class="hero-body">
+                <p class="title">
+                 <%= fileName %>
+                </p>
+                <p class="subtitle">
+                  Preview of your document. Currently logged in as <strong>Client</strong>.
+                </p>
+                <p><%= fileName %></p>
+                <embed src="<%= basefolder %>/uploads/<%= fileName %>" width="500" height="500">
+                  <p><%= basefolder %>/uploads/<%= fileName %></p>
+              </div>
+            </section>
+    <% } else if (fileName.endsWith('.png')) { %>
+        <section class="hero bd-hero bd-is-basic">
+            <div class="hero-body">
+              <p class="title">
+               <%= fileName %>
+              </p>
+              <p class="subtitle">
+                Preview of your file. Currently logged in as <strong>Client</strong>.
+              </p>
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-1by1">
+                    <img src="data:image/png;base64, <%= content %>" alt="image">
+                  </figure>
+                </div>
+            </div>
+            </div>
+          </section>
+        
+    <% } else if (fileName.endsWith('.gif')) { %>
+      <section class="hero bd-hero bd-is-basic">
+        <div class="hero-body">
+          <p class="title">
+           <%= fileName %>
+          </p>
+          <p class="subtitle">
+            Preview of your file. Currently logged in as <strong><%= user %></strong>.
+          </p>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-1by1">
+                <img src="data:image/gif;base64, <%= content %>" alt="image">
+              </figure>
+            </div>
+        </div>
+        </div>
+      </section>
+    <% } else { %>
+      <section class="hero bd-hero bd-is-basic">
+        <div class="hero-body">
+          <p class="title">
+           <%= fileName %>
+          </p>
+          <p class="subtitle">
+            Preview of your file. Currently logged in as <strong>Client</strong>.
+          </p>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-1by1">
+                <img src="data:image/jpeg;base64, <%= content %>" alt="image">
+              </figure>
+            </div>
+        </div>
+        </div>
+      </section>
+    <% } %>
+    <section class="section is-small "></section>
+      <footer class="footer">
+        <div class="content has-text-centered">
+
+        </div>
+      </footer>
+</body>
+</html>

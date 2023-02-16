@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Repository</title>
+  <style>  
+    .container {
+      width: 80%;
+      margin: 1rem auto;
+    }
+    
+    .text-justify {
+      text-align: justify;
+    }
+  </style>
+</head>
+
+<body>
+
+  
+  <div class="container">
+    <center>
+        <form action="/upload" enctype="multipart/form-data" method="POST">
+            <input type = "string" name = "name">
+            <input type="file" name="file" >
+            <input type="submit" value="Upload File" id = "submit-btn">
+        </form>
+
+        <form action="http://localhost:3000/files">
+          <input type="submit" value="View Files" />
+      </form>
+      <form action="http://localhost:3000/logout">
+        <input type="submit" value="Log Out" />
+    </form>
+      
+
+    </center>
+  </div>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script>  
+    var socket = io();
+  </script>
+  <script>
+    const btn = document.getElementById("view-btn");
+  </script>
+</body>
+</html>
